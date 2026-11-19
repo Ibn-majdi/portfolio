@@ -140,3 +140,6 @@
 /* MULTI-PAGE */
 .projects .section-head{margin-bottom:70px}
 @media(max-width:850px){.projects .section-head{margin-bottom:48px}}
+
+/* MOBILE HERO FIX: keep the data card clear of the intro copy */
+@media(max-width:850px){.hero-data{position:static;width:auto;margin-top:36px}}
