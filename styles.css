@@ -143,3 +143,11 @@
 
 /* MOBILE HERO FIX: keep the data card clear of the intro copy */
 @media(max-width:850px){.hero-data{position:static;width:auto;margin-top:36px}}
+
+
+/* WORK GALLERY: one group per project */
+.work-masonry{columns:3 280px;column-gap:16px}
+.work-masonry>img,.work-masonry>video{width:100%;height:auto;display:block;margin:0 0 16px;break-inside:avoid;border-radius:20px;background:#18181b}
+.work-masonry>img{transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.work-masonry>img:hover{transform:scale(1.02)}
+@media(max-width:850px){.work-masonry{columns:2 140px;column-gap:10px}.work-masonry>img,.work-masonry>video{margin-bottom:10px;border-radius:14px}}
