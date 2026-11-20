@@ -33,7 +33,7 @@
    opener=card;index=0;viewer.querySelector('#viewer-title').textContent=active.title;viewer.querySelector('#viewer-description').textContent=active.description;
    const roleEl=viewer.querySelector('#viewer-role'),caseEl=viewer.querySelector('#viewer-case');
    if(active.role){roleEl.hidden=false;viewer.querySelector('#viewer-role-text').textContent=active.role}else{roleEl.hidden=true}
-   if(active.caseStudy){caseEl.hidden=false;viewer.querySelector('#case-title').textContent=active.caseStudy.title;for(const k of['idea','research','execution','tools'])viewer.querySelector('#case-'+k).textContent=active.caseStudy[k]||''}else{caseEl.hidden=true}
+   if(active.caseStudy){caseEl.hidden=false;viewer.querySelector('#case-title').textContent=active.caseStudy.title;for(const k of['idea','research','execution','tools']){const p=viewer.querySelector('#case-'+k),v=active.caseStudy[k]||'';p.textContent=v;p.closest('section').hidden=!v}}else{caseEl.hidden=true}
    viewer.querySelector('#viewer-kind').textContent=card.querySelector('.bento-type').textContent;
    viewer.showModal();document.body.classList.add('viewer-open');render();viewer.scrollTop=0;
   }catch{location.href=card.href}finally{card.removeAttribute('aria-busy')}
