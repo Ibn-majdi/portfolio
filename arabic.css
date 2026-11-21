@@ -42,3 +42,5 @@ footer{font-size:11px;gap:16px}footer>span:first-child{display:flex;gap:5px;alig
 .viewer-case h3{font-size:24px}
 .viewer-role{font-size:14px}
 .case-grid p{font-size:14px;line-height:1.9}
+
+.deck-hint,.bento-tip{letter-spacing:0!important}
