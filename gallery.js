@@ -105,7 +105,7 @@
 
  viewer.querySelector('.viewer-close').addEventListener('click',()=>viewer.close());
  viewer.addEventListener('click',e=>{if(e.target===viewer){const r=viewer.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)viewer.close()}});
- viewer.addEventListener('close',()=>{++version;stopVideos(viewer);cardActive.replaceChildren();document.body.classList.remove('viewer-open');opener?.focus({preventScroll:true})});
+ viewer.addEventListener('close',()=>{++version;if(viewer.open)return;stopVideos(viewer);cardActive.replaceChildren();document.body.classList.remove('viewer-open');opener?.focus({preventScroll:true})});
  prev.addEventListener('click',()=>go(-1));next.addEventListener('click',()=>go(1));
  viewer.addEventListener('keydown',e=>{if(e.target.tagName==='VIDEO')return;if(e.key==='ArrowRight'&&!next.disabled){e.preventDefault();next.click()}if(e.key==='ArrowLeft'&&!prev.disabled){e.preventDefault();prev.click()}});
 })();
