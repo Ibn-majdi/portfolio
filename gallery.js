@@ -35,6 +35,8 @@
    v.playsInline=true;v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');
    v.preload='metadata';if(item.poster)v.poster=item.poster;
    v.src=item.src;v.load();
+   /* portrait videos (reels) get a portrait-sized deck; landscape keeps the wide box */
+   v.addEventListener('loadedmetadata',()=>{fitDeck(v.videoWidth,v.videoHeight)},{once:true});
    v.addEventListener('loadeddata',ready,{once:true});v.addEventListener('loadedmetadata',ready,{once:true});v.addEventListener('error',failed,{once:true});
    const badge=document.createElement('span');badge.className='play-badge';badge.innerHTML='<svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
    /* tap-to-play: first tap starts native playback with controls + sound */
@@ -48,7 +50,13 @@
    img.src=item.src;cardActive.append(img);
   }
  }
+ function fitDeck(w,h){
+  if(!w||!h)return;
+  if(h>w){deck.classList.add('portrait');deck.style.width=Math.min(deck.clientHeight*w/h,stage.clientWidth)+'px'}
+  else{deck.classList.remove('portrait');deck.style.width=''}
+ }
  function render(){
+  deck.classList.remove('portrait');deck.style.width='';
   fillActive(active.media[index]);
   fillBack(cardBack1,active.media[index+1]);
   fillBack(cardBack2,active.media[index+2]);

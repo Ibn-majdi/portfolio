@@ -228,3 +228,8 @@
 .project-viewer #viewer-description{margin:16px 0 0}
 .project-viewer .viewer-role{margin:10px 0 0}
 @media(max-width:540px){.deck{height:44vh}.deck-stage{padding-top:40px}}
+
+/* Portrait videos (reels): deck takes the video's portrait size instead of the wide box */
+.deck{margin-inline:auto;transition:width .45s cubic-bezier(.16,1,.3,1)}
+.deck.portrait{height:min(60vh,560px)}
+@media(max-width:540px){.deck.portrait{height:54vh}}
