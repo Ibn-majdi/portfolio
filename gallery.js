@@ -32,7 +32,9 @@
   const failed=()=>{if(current!==version)return;ready();error.hidden=false;error.querySelector('a').href=item.src};
   if(item.type==='video'){
    const v=document.createElement('video');
-   v.playsInline=true;v.preload='metadata';if(item.poster)v.poster=item.poster;
+   v.playsInline=true;v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');
+   v.preload='metadata';if(item.poster)v.poster=item.poster;
+   v.src=item.src;v.load();
    v.addEventListener('loadeddata',ready,{once:true});v.addEventListener('loadedmetadata',ready,{once:true});v.addEventListener('error',failed,{once:true});
    const badge=document.createElement('span');badge.className='play-badge';badge.innerHTML='<svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
    /* tap-to-play: first tap starts native playback with controls + sound */
