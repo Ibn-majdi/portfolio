@@ -24,8 +24,8 @@
     var r = sec.getBoundingClientRect();
     var vh = window.innerHeight;
     var p = Math.min(Math.max((vh - r.top) / (vh + r.height), 0), 1);
-    var y = (p - 0.5) * 120;
-    var rot = (p - 0.5) * 24;
+    var y = (p - 0.5) * 80;
+    var rot = (p - 0.5) * 8;
     orb.style.transform = 'translateY(' + y.toFixed(1) + 'px) rotate(' + rot.toFixed(1) + 'deg)';
   }
 
