@@ -90,7 +90,7 @@
    e.preventDefault();card.setAttribute('aria-busy','true');
    try{
     const list=await getProjects();active=list.find(p=>p.id===card.dataset.project);if(!active)throw new Error('Missing project');
-    opener=card;index=0;viewer.querySelector('#viewer-title').textContent=active.title;viewer.querySelector('#viewer-description').textContent=active.description;
+    opener=card;index=active.media.findIndex(m=>(m.type==='video'?(m.poster||m.src):m.src)===active.cover);if(index<0)index=0;viewer.querySelector('#viewer-title').textContent=active.title;viewer.querySelector('#viewer-description').textContent=active.description;
     const roleEl=viewer.querySelector('#viewer-role'),caseEl=viewer.querySelector('#viewer-case');
     if(active.role){roleEl.hidden=false;viewer.querySelector('#viewer-role-text').textContent=active.role}else{roleEl.hidden=true}
     if(active.caseStudy){caseEl.hidden=false;viewer.querySelector('#case-title').textContent=active.caseStudy.title;for(const k of['idea','goal','research','execution','challenge','result','tools']){const p=viewer.querySelector('#case-'+k),v=active.caseStudy[k]||'';p.textContent=v;p.closest('section').hidden=!v}}else{caseEl.hidden=true}
