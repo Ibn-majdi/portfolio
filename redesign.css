@@ -87,7 +87,6 @@ html.portal-motion .reveal.show{opacity:1;transform:none}
 .pt-statement-text{position:relative;z-index:1;font-size:clamp(24px,3.6vw,52px);font-weight:600;line-height:1.15;letter-spacing:-.03em;max-width:22ch;margin:0}
 [dir="rtl"] .pt-statement-text{letter-spacing:0}
 .pt-statement-text em{font-style:normal;color:var(--emerald)}
-.pt-index{position:relative;z-index:1;margin:56px 0 0;font-size:clamp(110px,17vw,210px);font-weight:600;line-height:1;color:transparent;-webkit-text-stroke:1px #d4d4d8}
 .pt-orb{position:absolute;inset-inline-end:-90px;top:50%;width:340px;height:340px;margin-top:-170px;border-radius:50%;overflow:hidden;opacity:.5;will-change:transform}
 .pt-orb img{width:100%;height:100%;object-fit:cover;display:block}
 
@@ -118,20 +117,7 @@ html.portal-motion .reveal.show{opacity:1;transform:none}
 .pt-dots button{width:8px;height:8px;border-radius:50%;border:0;background:#d4d4d8;padding:0;cursor:pointer}
 .pt-dots button[aria-current="true"]{background:var(--emerald)}
 
-/* ============================================================
-   ROSTER
-   ============================================================ */
 
-.pt-roster{background:#000;color:#fff;padding:160px max(32px,calc((100vw - 1400px)/2))}
-.pt-roster h2{font-size:clamp(36px,4vw,54px);font-weight:600;letter-spacing:-.04em;line-height:1.05;margin:0 0 56px}
-[dir="rtl"] .pt-roster h2{letter-spacing:0}
-.pt-roster-row{display:grid;grid-template-columns:170px 1fr auto;gap:24px;align-items:baseline;padding:26px 0;border-top:1px solid rgba(255,255,255,.1);color:#fff}
-.pt-roster-row:last-child{border-bottom:1px solid rgba(255,255,255,.1)}
-.pt-roster-row:hover .pt-roster-name{color:var(--accent)}
-.pt-roster-label{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--accent)}
-.pt-roster-name{font-size:clamp(28px,3.4vw,44px);font-weight:600;letter-spacing:-.03em;line-height:1.05}
-[dir="rtl"] .pt-roster-name{letter-spacing:0}
-.pt-roster-count{font-size:12px;color:var(--sub);text-align:end;white-space:nowrap}
 
 /* ============================================================
    PAGE HERO (work / services / store / info)
@@ -298,14 +284,11 @@ html.portal-motion .reveal.show{opacity:1;transform:none}
   .pt-hero .pt-title h1{font-size:clamp(64px,15vw,150px)}
   .pt-meta-tl,.pt-meta-tr{top:92px}
   .pt-meta{font-size:9px;letter-spacing:.12em}
-  .pt-statement,.pt-releases,.pt-roster,.pt-research,.pt-caps,.pt-dates,.pt-toolbox,.pt-packages,.pt-products,.pt-catalogue{padding:92px 24px}
+  .pt-statement,.pt-releases,.pt-research,.pt-caps,.pt-dates,.pt-toolbox,.pt-packages,.pt-products,.pt-catalogue{padding:92px 24px}
   .pt-page-hero{padding:150px 24px 80px}
   .pt-page-index{margin-top:40px;font-size:9px}
   .pt-page-index span:last-child{display:none}
   .pt-orb{width:200px;height:200px;margin-top:-100px;inset-inline-end:-70px;opacity:.35}
-  .pt-roster-row{grid-template-columns:1fr auto;gap:8px}
-  .pt-roster-label{grid-column:1/-1}
-  .pt-roster-name{grid-column:1}
   .pt-sleeve-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
   .pt-package{grid-template-columns:1fr;gap:12px}
   .pt-package-price{text-align:start;padding-top:0}
