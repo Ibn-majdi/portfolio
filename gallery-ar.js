@@ -94,7 +94,7 @@
     const roleEl=viewer.querySelector('#viewer-role'),caseEl=viewer.querySelector('#viewer-case');
     if(active.role){roleEl.hidden=false;viewer.querySelector('#viewer-role-text').textContent=active.role}else{roleEl.hidden=true}
     if(active.caseStudy){caseEl.hidden=false;viewer.querySelector('#case-title').textContent=active.caseStudy.title;for(const k of['idea','goal','research','execution','challenge','result','tools']){const p=viewer.querySelector('#case-'+k),v=active.caseStudy[k]||'';p.textContent=v;p.closest('section').hidden=!v}}else{caseEl.hidden=true}
-    viewer.querySelector('#viewer-kind').textContent=card.querySelector('.sleeve-type').textContent;
+    const _st=card.querySelector('.sleeve-type');viewer.querySelector('#viewer-kind').textContent=_st?_st.textContent:'';
     viewer.showModal();document.body.classList.add('viewer-open');render();viewer.scrollTop=0;
    }catch{location.href=card.href}finally{card.removeAttribute('aria-busy')}
   });
