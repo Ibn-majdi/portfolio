@@ -3,7 +3,6 @@
  const viewer=document.querySelector('.project-viewer');
  if(!viewer || !viewer.showModal)return;
  const DECK_DIR=1; /* LTR: swipe left = next */
- const TIP_TEXT='Explore project ↗';
  let projects,active,index=0,opener,version=0;
  const stage=viewer.querySelector('.deck-stage'),deck=viewer.querySelector('#deck'),error=viewer.querySelector('.viewer-error');
  const cardActive=deck.querySelector('.dcard.active'),cardBack1=deck.querySelector('.dcard.behind1'),cardBack2=deck.querySelector('.dcard.behind2');
@@ -85,7 +84,7 @@
   if(Math.abs(dx)>90){go(dx<0?DECK_DIR:-DECK_DIR)}
  }
 
- /* TiltedCard grid: 3D tilt + cursor tooltip, mouse pointers only (event-detected) */
+ /* Project cards: click opens the viewer (identity motion — no tilt, no cursor tooltip) */
  document.querySelectorAll('[data-project]').forEach(card=>{
   card.addEventListener('click',async e=>{
    e.preventDefault();card.setAttribute('aria-busy','true');
@@ -95,22 +94,10 @@
     const roleEl=viewer.querySelector('#viewer-role'),caseEl=viewer.querySelector('#viewer-case');
     if(active.role){roleEl.hidden=false;viewer.querySelector('#viewer-role-text').textContent=active.role}else{roleEl.hidden=true}
     if(active.caseStudy){caseEl.hidden=false;viewer.querySelector('#case-title').textContent=active.caseStudy.title;for(const k of['idea','goal','research','execution','challenge','result','tools']){const p=viewer.querySelector('#case-'+k),v=active.caseStudy[k]||'';p.textContent=v;p.closest('section').hidden=!v}}else{caseEl.hidden=true}
-    viewer.querySelector('#viewer-kind').textContent=card.querySelector('.bento-type').textContent;
+    viewer.querySelector('#viewer-kind').textContent=card.querySelector('.sleeve-type').textContent;
     viewer.showModal();document.body.classList.add('viewer-open');render();viewer.scrollTop=0;
    }catch{location.href=card.href}finally{card.removeAttribute('aria-busy')}
   });
-  const tip=document.createElement('span');tip.className='bento-tip';tip.textContent=TIP_TEXT;card.append(tip);
-  card.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')card.classList.add('tilt-on')});
-  card.addEventListener('pointermove',e=>{
-   if(e.pointerType!=='mouse')return;
-   const r=card.getBoundingClientRect();
-   const ox=(e.clientX-r.left)/r.width-.5,oy=(e.clientY-r.top)/r.height-.5;
-   card.style.transform=`rotateX(${oy*-20}deg) rotateY(${ox*20}deg) scale(1.03)`;
-   const tw=tip.offsetWidth,th=tip.offsetHeight;
-   const tx=Math.min(Math.max(e.clientX-r.left+14,8),r.width-tw-8),ty=Math.min(Math.max(e.clientY-r.top+16,8),r.height-th-8);
-   tip.style.transform=`translate(${tx}px,${ty}px)`;
-  });
-  card.addEventListener('pointerleave',()=>{card.classList.remove('tilt-on');card.style.transform='';});
  });
 
  viewer.querySelector('.viewer-close').addEventListener('click',()=>viewer.close());
